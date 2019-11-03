@@ -60,6 +60,8 @@ public class GivenBlackBox
 
     Course upperPartition;
     HashMap<String, String> upperPartitionExpected = new HashMap<String, String>();
+    
+    Course nullPointerException;
 
     @Before
     public void setUp() throws Exception
@@ -108,6 +110,8 @@ public class GivenBlackBox
         
         upperPartitionExpected.put(">100", "A");
         upperPartitionExpected.put("=35", "F");
+        
+        nullPointerException = createCourse("Null Pointer");
     }
 
     @After
@@ -151,5 +155,20 @@ public class GivenBlackBox
         for (Map.Entry<String, String> e : ans.entrySet())
             System.out.println("Upper: " + e.getKey() + " " + e.getValue());
         assertTrue(ans.equals(upperPartitionExpected));
+    }
+    
+    @Test
+    public void nullPointerTest()
+    {
+        try
+        {
+            Map<String, String> ans = nullPointerException.curveLetterGrades();
+            
+            assertTrue(false);
+        }
+        catch (NullPointerException e)
+        {
+            assertNotNull(e);
+        }
     }
 }
