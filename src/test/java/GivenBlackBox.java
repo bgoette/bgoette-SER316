@@ -63,6 +63,9 @@ public class GivenBlackBox
     
     Course nullPointerException;
 
+    Course thousandStudents;
+    HashMap<String, String> thousandStudentsExpected = new HashMap<String, String>();
+
     @Before
     public void setUp() throws Exception
     {
@@ -112,6 +115,28 @@ public class GivenBlackBox
         upperPartitionExpected.put("=35", "F");
         
         nullPointerException = createCourse("Null Pointer");
+        
+        thousandStudents = createCourse("Thousand");
+        
+        for (int i = 0; i < 100000; i++)
+        {
+            int grade = i % 100;
+            String expected = "";
+            
+            if (grade <= 35)
+                expected = "F";
+            else if (grade <= 59)
+                expected = "D";
+            else if (grade <= 79)
+                expected = "C";
+            else if (grade <= 89)
+                expected = "B";
+            else 
+                expected = "A";
+            
+            thousandStudents.set_points("i = " + i, i % 100);
+            thousandStudentsExpected.put("i = " + i, expected);
+        }
     }
 
     @After
@@ -170,5 +195,13 @@ public class GivenBlackBox
         {
             assertNotNull(e);
         }
+    }
+    
+    @Test
+    public void thousandStudentsBoundary()
+    {
+        Map<String, String> ans = upperPartition.curveLetterGrades();
+
+        assertTrue(ans.equals(upperPartitionExpected));
     }
 }
