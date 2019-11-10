@@ -40,25 +40,25 @@
     <td>MJ</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>5</td>
+    <td>Main.java: 3-6</td>
+    <td>Multiple unused imports</td>
+    <td>MD</td>
+    <td>LOW</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>6</td>
+    <td>Course.java: 159-161</td>
+    <td>Dead code</td>
+    <td>CS</td>
+    <td>LOW</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>7</td>
+    <td>Course.java: 18-19</td>
+    <td>Private variables not prefixed with underscore</td>
+    <td>CG</td>
+    <td>LOW</td>
   </tr>
   <tr>
     <td></td>
