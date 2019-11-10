@@ -33,9 +33,9 @@
     <td>LOW</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>4</td>
+    <td>Student.java: equals method</td>
+    <td>Student.equals(Object) only compares Asurite's and Student doesn't enforce unique Asurite ID's</td>
     <td></td>
     <td></td>
   </tr>
