@@ -26,11 +26,11 @@
     <td>LOW</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>3</td>
+    <td>Main.java: 15-22</td>
+    <td>Excessive use of string literals for Enums</td>
+    <td>CS</td>
+    <td>LOW</td>
   </tr>
   <tr>
     <td></td>
