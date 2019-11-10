@@ -11,11 +11,11 @@
     <th>Problem<br>Severity</th>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>1</td>
+    <td>All Source Files</td>
+    <td>Missing File Banner</td>
+    <td>CG</td>
+    <td>Low</td>
   </tr>
   <tr>
     <td></td>
