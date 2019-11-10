@@ -52,7 +52,10 @@ public class Student {
         if(other == this) return true;
         if(other.getClass() != this.getClass()) return false;
         Student s = (Student) other;
-        return this.getAsurite().equals(s.getAsurite());
+        
+        return this.getAsurite().equals(s.getAsurite()) &&
+                this.getMajor().equals(s.getMajor()) &&
+                this.getOverall_grade() == s.getOverall_grade();
     }
 
 }
