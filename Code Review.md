@@ -1,6 +1,6 @@
 # Code Review Defect List
 
-**Reviewer:** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ **GH Repo:** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+**Reviewer:** _Barney Goette_ **GH Repo:** _bgoette-SER316_
 
 <table style="width:100%">
   <tr>
