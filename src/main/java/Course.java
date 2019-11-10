@@ -305,9 +305,4 @@ public class Course {
         
         return adjustedLetterGrades;
     }
-
-
-
-
-
 }
