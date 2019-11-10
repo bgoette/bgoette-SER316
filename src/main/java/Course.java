@@ -263,11 +263,11 @@ public class Course {
         int maxStudentPoints = calculateMax();
         int scoreToAdd = 0;
         
-        if (maxStudentPoints <= 0) 
+        if (maxStudentPoints == -1 && points.size() == 1) 
         {
-            for (Student student : students)
+            for (String key : points.keySet())
             {
-                adjustedLetterGrades.put(student.getAsurite(), "F");
+                adjustedLetterGrades.put(key, "A");
             }
             
             return adjustedLetterGrades;
@@ -277,9 +277,9 @@ public class Course {
             scoreToAdd = this.maxPoints - maxStudentPoints;
         }
 
-        for (Student student : students)
+        for (String key: points.keySet())
         {
-            double newScore = student.getOverall_grade() + scoreToAdd;
+            double newScore = points.get(key) + scoreToAdd;
             double percent = newScore / this.maxPoints * 100;
             String letterGrade = "A";
             
@@ -300,7 +300,7 @@ public class Course {
                 letterGrade = "B";
             }
             
-            adjustedLetterGrades.put(student.getAsurite(), letterGrade);
+            adjustedLetterGrades.put(key, letterGrade);
         }
         
         return adjustedLetterGrades;
