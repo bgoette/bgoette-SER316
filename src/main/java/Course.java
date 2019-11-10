@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.IntFunction;
 
 
 public class Course {
@@ -250,8 +251,59 @@ public class Course {
      * @return hashmap with final letter grades for students based on curving `points`.
      * @throws NullPointerException
      */
-    public Map<String, String> curveLetterGrades() throws NullPointerException { //TODO verify no side effect with points.
-        return null; //implement me in assign 3 (not in assign 2)
+    public Map<String, String> curveLetterGrades() throws NullPointerException //TODO verify no side effect with points.
+    { 
+        if (students == null || students.size() < 1)
+        {
+            throw new NullPointerException("Must have students in course!");
+        }
+        
+        Map<String, String> adjustedLetterGrades = new HashMap<String, String>();
+        
+        int maxStudentPoints = calculateMax();
+        int scoreToAdd = 0;
+        
+        if (maxStudentPoints <= 0) 
+        {
+            for (Student student : students)
+            {
+                adjustedLetterGrades.put(student.getAsurite(), "F");
+            }
+            
+            return adjustedLetterGrades;
+        }
+        else if (maxStudentPoints <= this.maxPoints)
+        {
+            scoreToAdd = this.maxPoints - maxStudentPoints;
+        }
+
+        for (Student student : students)
+        {
+            double newScore = student.getOverall_grade() + scoreToAdd;
+            double percent = newScore / this.maxPoints * 100;
+            String letterGrade = "A";
+            
+            if (percent <= 35)
+            {
+                letterGrade = "F";
+            }
+            else if (percent <= 59)
+            {
+                letterGrade = "D";
+            }
+            else if (percent <= 79)
+            {
+                letterGrade = "C";
+            }
+            else if (percent <= 89)
+            {
+                letterGrade = "B";
+            }
+            
+            adjustedLetterGrades.put(student.getAsurite(), letterGrade);
+        }
+        
+        return adjustedLetterGrades;
     }
 
 
