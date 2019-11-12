@@ -168,4 +168,29 @@ public class CourseTest
         HashMap<String, Integer> ans = course.countOccurencesLetterGrades(true);
         assertTrue(ans.equals(courseExpected));
     }
+    
+    @Test
+    public void dropStudentTest()
+    {
+        Course course = new Course("SER316");
+        
+        String student = "Barney";
+        
+        course.set_points(student, 100);
+        
+        assertNotNull(course.getStudent_Points(student));
+        
+        course.dropStudent(student);
+
+        try
+        {
+            int points = course.getStudent_Points(student);
+            
+            assertTrue(false);
+        }
+        catch (NullPointerException e)
+        {
+            assertNotNull(e);
+        }
+    }
 }
