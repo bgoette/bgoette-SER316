@@ -228,7 +228,6 @@ public class Course {
              */
             // SER316 - Start
             {
-                
                 occur.put(grade, occur.get(grade) + 1);
             }
             // SER 316 - End
