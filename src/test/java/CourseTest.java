@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CourseTest
@@ -192,5 +193,42 @@ public class CourseTest
         {
             assertNotNull(e);
         }
+        
+        course.dropStudent(null);
+        
+        course.set_points(student, 100);
+        ArrayList<Student> students = course.getStudents();
+        
+        String newStudent = "Barney Goette";
+        students.get(0).setAsurite(newStudent);
+        
+        course.dropStudent(newStudent);
+    }
+    
+    @Test
+    public void addStudentTest()
+    {
+        Course course = new Course("SER316");
+        
+        String student = "Barney";
+
+        try
+        {
+            int points = course.getStudent_Points(student);
+            
+            assertTrue(false);
+        }
+        catch (NullPointerException e)
+        {
+            assertNotNull(e);
+        }
+        
+        course.addStudent(new Student(student, null));
+        
+        assertNotNull(course.getStudent_Points(student));
+        
+        course.addStudent(new Student(student, null));
+        
+        assertNotNull(course.getStudent_Points(student));
     }
 }
