@@ -114,13 +114,19 @@ public class Course {
         return points;
     }
 
-    public int getStudent_Points(String student) {
+    /*
+     * If key doesn't exist in points, this method will try
+     * and return null, but it needs to return an int
+     */
+    // SER316-Start
+    public int getStudent_Points(String student) throws NullPointerException {
         return points.get(student);
     }
 
-    public int getStudent_Points(Student student) {
+    public int getStudent_Points(Student student) throws NullPointerException {
         return points.get(student.getAsurite());
     }
+    // SER316-End
 
     public int getMaxPoints() {
         return maxPoints;
