@@ -222,7 +222,16 @@ public class Course {
             }
         } else {
             for(String grade : curveLetterGrades().values())
-                occur.put(grade, occur.get(occur) + 1);
+                
+            /*
+             * Changed because the key being passed to occur.get is a HashMap, needs to be a string
+             */
+            // SER316 - Start
+            {
+                
+                occur.put(grade, occur.get(grade) + 1);
+            }
+            // SER 316 - End
         }
         return occur;
 
