@@ -7,8 +7,11 @@ import java.util.NoSuchElementException;
 
 public class Main {
     static HashMap<String, Student> students = new HashMap<>();
-    static HashMap<String, CourseGrades0> courses = new HashMap<>(); //change to one that works with happy day case
-    static HashMap<String, CourseGrades4> courses4 = new HashMap<>(); //change to one that works with happy day case
+    
+    // change to one that works with happy day case
+    static HashMap<String, CourseGrades0> courses = new HashMap<>(); 
+    // change to one that works with happy day case
+    static HashMap<String, CourseGrades4> courses4 = new HashMap<>(); 
 
     public static void main(String[] args)throws Exception {
 
@@ -48,13 +51,12 @@ public class Main {
 
         courses.get("SER315").countOccurencesLetterGrades(true);
 
-        System.out.println("CURVE:\n" +
-                "     * >  89% -> A\n" +
-                "     * >  79% -> B\n" +
-                "     * >  59% -> C\n" +
-                "     * >  35% -> D\n" +
-                "     * <= 35% -> F");
+        System.out.println("CURVE:\n" 
+            + "     * >  89% -> A\n" 
+            + "     * >  79% -> B\n" 
+            + "     * >  59% -> C\n" 
+            + "     * >  35% -> D\n" 
+            + "     * <= 35% -> F");
         courses4.get("SER315").curveLetterGrades();
-
     }
 }

@@ -3,19 +3,16 @@ package main.java;
 import java.awt.List;
 import java.util.ArrayList;
 
-
-
 public class Student {
     private String asurite;
     private Major major;
-    private double overall_grade;
+    private double overallGrade;
     private ArrayList<Course> courses = new ArrayList<Course>();
 
-    public Student(String asurite, Major major){
+    public Student(String asurite, Major major) {
         this.setAsurite(asurite);
         this.setMajor(major);
         setOverall_grade(0);
-
     }
 
     public String getAsurite() {
@@ -40,19 +37,27 @@ public class Student {
     }
 
     public double getOverall_grade() {
-        return overall_grade;
+        return overallGrade;
     }
 
-    public void setOverall_grade(double overall_grade) {
-        this.overall_grade = overall_grade;
+    public void setOverall_grade(double overallGrade) {
+        this.overallGrade = overallGrade;
     }
 
-    public boolean equals(Object other){
-        if(other == null) return false;
-        if(other == this) return true;
-        if(other.getClass() != this.getClass()) return false;
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+        
+        if (other == this) {
+            return true;
+        }
+        
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+        
         Student s = (Student) other;
         return this.getAsurite().equals(s.getAsurite());
     }
-
 }
