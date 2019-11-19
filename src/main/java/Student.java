@@ -60,4 +60,9 @@ public class Student {
         Student s = (Student) other;
         return this.getAsurite().equals(s.getAsurite());
     }
+    
+    // SER316 TASK 2 SPOTBUGS FIX
+    public int hashCode() {
+        return this.asurite.hashCode() + this.major.hashCode();
+    }
 }

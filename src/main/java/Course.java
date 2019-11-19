@@ -62,7 +62,7 @@ public class Course {
             int allPoints = 0;
             for (int point: collection) {
                 if (point >= 0) {
-                    counter = counter++;
+                    counter++;
                     
                     if (point < min) {
                         min = point;
@@ -227,7 +227,7 @@ public class Course {
             }
         } else {
             for (String grade : curveLetterGrades().values()) {
-                occur.put(grade, occur.get(occur) + 1);                
+                occur.put(grade, occur.get(grade) + 1);                
             }
         }
         return occur;
