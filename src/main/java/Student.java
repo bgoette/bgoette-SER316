@@ -63,9 +63,9 @@ public class Student {
          * Checking this.getMajor().equals... will fail if major is null
          */
         // SER316-Start
-        return this.getAsurite().equals(s.getAsurite()) &&
-                this.getMajor() == s.getMajor() &&
-                this.getOverall_grade() == s.getOverall_grade();
+        return this.getAsurite().equals(s.getAsurite()) 
+                && this.getMajor() == s.getMajor() 
+                && this.getOverall_grade() == s.getOverall_grade();
         // SER316-End
     }
     

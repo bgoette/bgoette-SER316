@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.IntFunction;
 
 
@@ -98,7 +99,7 @@ public class Course {
     ArrayList<Student> students  = new ArrayList<Student>();
     
     public boolean addStudent(Student s) {
-        if(students != null && points.putIfAbsent(s.getAsurite(), -1) == null) {
+        if (students != null && points.putIfAbsent(s.getAsurite(), -1) == null) {
             /*
              * Calls students.add() twice
              */
@@ -241,13 +242,14 @@ public class Course {
         } else {
             for (String grade : curveLetterGrades().values()) {
                 
-            /*
-             * Changed because the key being passed to occur.get is a HashMap, needs to be a string
-             */
-            // SER316 - Start
+                /*
+                 * Changed because the key being passed to 
+                 * occur.get is a HashMap, needs to be a string
+                 */
+                // SER316 - Start
                 occur.put(grade, occur.get(grade) + 1);
+                // SER 316 - End
             }
-            // SER 316 - End
         }
         return occur;
     }
@@ -275,10 +277,8 @@ public class Course {
      * @return hashmap with final letter grades for students based on curving `points`.
      * @throws NullPointerException Returns null
      */
-    public Map<String, String> curveLetterGrades() throws NullPointerException //TODO verify no side effect with points.
-    { 
-        if (students == null || students.size() < 1)
-        {
+    public Map<String, String> curveLetterGrades() throws NullPointerException { 
+        if (students == null || students.size() < 1) {
             throw new NullPointerException("Must have students in course!");
         }
         
@@ -287,44 +287,32 @@ public class Course {
         int maxStudentPoints = calculateMax();
         int scoreToAdd = 0;
         
-        if (maxStudentPoints == -1 && points.size() == 1) 
-        {
-            for (String key : points.keySet())
-            {
+        if (maxStudentPoints == -1 && points.size() == 1) {
+            for (String key : points.keySet()) {
                 adjustedLetterGrades.put(key, "A");
             }
             
             return adjustedLetterGrades;
-        }
-        else if (maxStudentPoints <= this.maxPoints)
-        {
+        } else if (maxStudentPoints <= this.maxPoints) {
             scoreToAdd = this.maxPoints - maxStudentPoints;
         }
 
-        for (String key: points.keySet())
-        {
-            double newScore = points.get(key) + scoreToAdd;
+        for (Entry<String, Integer> key: points.entrySet()) {
+            double newScore = key.getValue() + scoreToAdd;
             double percent = newScore / this.maxPoints * 100;
             String letterGrade = "A";
             
-            if (percent <= 35)
-            {
+            if (percent <= 35) {
                 letterGrade = "F";
-            }
-            else if (percent <= 59)
-            {
+            } else if (percent <= 59) {
                 letterGrade = "D";
-            }
-            else if (percent <= 79)
-            {
+            } else if (percent <= 79) {
                 letterGrade = "C";
-            }
-            else if (percent <= 89)
-            {
+            } else if (percent <= 89) {
                 letterGrade = "B";
             }
             
-            adjustedLetterGrades.put(key, letterGrade);
+            adjustedLetterGrades.put(key.getKey(), letterGrade);
         }
         
         return adjustedLetterGrades;
