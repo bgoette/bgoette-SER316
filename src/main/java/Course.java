@@ -177,7 +177,7 @@ public class Course {
         return max;
     }
 
-    
+
     /**
      * This is where you create your node flow graph and write your White Box test. 
      * Calculates final grades either with curve or without  (assign 3)

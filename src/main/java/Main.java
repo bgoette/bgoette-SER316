@@ -21,7 +21,7 @@ public class Main {
         students.put("alex", new Student("alex", Major.valueOf("SER")));
         students.put("rose", new Student("rose", Major.valueOf("SER")));
 
-        
+
         courses.put("SER316", new CourseGrades0("SER316"));
         courses.put("SER315", new CourseGrades0("SER315"));
         courses.put("SC232", new CourseGrades0("CS232"));
@@ -30,14 +30,14 @@ public class Main {
         courses4.put("SER315", new CourseGrades4("SER315"));
         courses4.put("SC232", new CourseGrades4("CS232"));
 
-        
+
         courses.get("SER315").set_points("anna", 40);
         courses.get("SER315").set_points("harry", 20);
         courses.get("SER315").set_points("aneesh", 30);
         courses.get("SER315").set_points("rebecca", 10);
         courses.get("SER315").set_points("alex", 30);
         courses.get("SER315").set_points("rose", 15);
-        
+
 
         courses4.get("SER315").set_points("anna", 80);
         courses4.get("SER315").set_points("harry", 60);
@@ -45,7 +45,7 @@ public class Main {
         courses4.get("SER315").set_points("rebecca", 10);
         courses4.get("SER315").set_points("alex", 30);
         courses4.get("SER315").set_points("rose", 15);
-        
+
         courses.get("SER315").countOccurencesLetterGrades(true);
 
         System.out.println("CURVE:\n" +
@@ -55,6 +55,6 @@ public class Main {
                 "     * >  35% -> D\n" +
                 "     * <= 35% -> F");
         courses4.get("SER315").curveLetterGrades();
-     
+
     }
 }
