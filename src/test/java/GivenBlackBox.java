@@ -39,7 +39,7 @@ public class GivenBlackBox
                 { CourseGrades5.class }
 
         };
-        
+
         return Arrays.asList(classes);
     }
 
@@ -60,7 +60,7 @@ public class GivenBlackBox
 
     Course upperPartition;
     HashMap<String, String> upperPartitionExpected = new HashMap<String, String>();
-    
+
     Course nullPointerException;
 
     Course thousandStudents;
@@ -97,32 +97,32 @@ public class GivenBlackBox
         happyDayGradeBoundaryExpected.put(">59", "C");
         happyDayGradeBoundaryExpected.put(">35", "D");
         happyDayGradeBoundaryExpected.put("<=35", "F");
-        
+
         lowerPartition = createCourse("Lower");
-        
+
         lowerPartition.set_points("<0", -1);
         lowerPartition.set_points(">=0", 100);
-        
+
         lowerPartitionExpected.put("<0", "F");
         lowerPartitionExpected.put(">=0", "A");
-        
+
         upperPartition = createCourse("Upper");
-        
+
         upperPartition.set_points(">100", 110);
         upperPartition.set_points("=35", 35);
-        
+
         upperPartitionExpected.put(">100", "A");
         upperPartitionExpected.put("=35", "F");
-        
+
         nullPointerException = createCourse("Null Pointer");
-        
+
         thousandStudents = createCourse("Thousand");
-        
+
         for (int i = 0; i < 1000; i++)
         {
             int grade = i % 100;
             String expected = "";
-            
+
             if (grade <= 35)
                 expected = "F";
             else if (grade <= 59)
@@ -133,7 +133,7 @@ public class GivenBlackBox
                 expected = "B";
             else 
                 expected = "A";
-            
+
             thousandStudents.set_points("i = " + i, i % 100);
             thousandStudentsExpected.put("i = " + i, expected);
         }
@@ -181,14 +181,14 @@ public class GivenBlackBox
             System.out.println("Upper: " + e.getKey() + " " + e.getValue());
         assertTrue(ans.equals(upperPartitionExpected));
     }
-    
+
     @Test
     public void nullPointerTest()
     {
         try
         {
             Map<String, String> ans = nullPointerException.curveLetterGrades();
-            
+
             assertTrue(false);
         }
         catch (NullPointerException e)
@@ -196,7 +196,7 @@ public class GivenBlackBox
             assertNotNull(e);
         }
     }
-    
+
     @Test
     public void thousandStudentsBoundary()
     {
