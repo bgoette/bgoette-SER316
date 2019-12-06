@@ -5,20 +5,17 @@ package main.java;
  */
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.IntFunction;
 
 
 public class Course {
 
     // Maps student names (asurite) to their points
     public Map<String, Integer> points = new HashMap<>();
+    public Map<String, Registration> registrations = new HashMap<>();
     
     // Course name
     private String name;
@@ -51,7 +48,10 @@ public class Course {
 
 
     public double calculateAverageWithoutMinWithoutMax() throws NullPointerException {
-        ArrayList<Integer> collection = new ArrayList<Integer>(points.values());
+        final List<Integer> collection = new ArrayList<>();
+        registrations.forEach((student, reg) -> {
+            collection.add(reg.getPoints());
+        });
 
         int counter = 0;
         int min = Integer.MAX_VALUE;
@@ -89,7 +89,7 @@ public class Course {
     // REACH at least 95% Code Coverage (assign 3)
     // drop a student from course.
     public boolean dropStudent(String asurite) {
-        boolean removeFromPoints = points.remove(asurite) != null;
+        boolean removeFromPoints = registrations.remove(asurite) != null;
         boolean removeFromStudents = students.remove(new Student(asurite, null));
         return removeFromPoints == removeFromStudents;
     }
@@ -97,10 +97,12 @@ public class Course {
     // REACH at least 95% Code coverage  (assign 3)
     // Students should only be added when they are not yet 
     // in the course (names (asurite member) needs to be unique)
-    ArrayList<Student> students  = new ArrayList<Student>();
+    List<Student> students  = new ArrayList<Student>();
     
     public boolean addStudent(Student s) {
-        if (students != null && points.putIfAbsent(s.getAsurite(), -1) == null) {
+        Registration reg = new Registration(s.getAsurite(), this, -1);
+        
+        if (students != null && registrations.putIfAbsent(s.getAsurite(), reg) == null) {
             /*
              * Calls students.add() twice
              */
@@ -113,15 +115,15 @@ public class Course {
     }
 
     public void set_points(String name, int points) {
-        if (!this.points.containsKey(name)) {
+        if (!this.registrations.containsKey(name)) {
             addStudent(new Student(name, null));            
         }
         
-        this.points.put(name, points);
+        this.registrations.get(name).setPoints(points);
     }
 
-    public Map<String, Integer> getPoints() {
-        return points;
+    public Map<String, Registration> getPoints() {
+        return registrations;
     }
 
     /*
@@ -130,11 +132,11 @@ public class Course {
      */
     // SER316-Start
     public int getStudent_Points(String student) throws NullPointerException {
-        return points.get(student);
+        return registrations.get(student).getPoints();
     }
 
     public int getStudent_Points(Student student) throws NullPointerException {
-        return points.get(student.getAsurite());
+        return registrations.get(student.getAsurite()).getPoints();
     }
     // SER316-End
 
@@ -174,7 +176,10 @@ public class Course {
     }
 
     public int calculateMax() throws NullPointerException {
-        List<Integer> collection = new ArrayList<Integer>(points.values());
+        List<Integer> collection = new ArrayList<>();
+        registrations.forEach((student, reg) -> {
+            collection.add(reg.getPoints());
+        });
 
         if (collection.size() == 1) {
             return -1;
@@ -242,7 +247,11 @@ public class Course {
         Map<String, Integer> occur;
 
         if (!curved) {
-            ArrayList<Integer> collection = new ArrayList<Integer>(points.values());
+            List<Integer> collection = new ArrayList<>();
+            registrations.forEach((student, reg) -> {
+                collection.add(reg.getPoints());
+            });
+            
             if (collection.isEmpty()) {
                 throw new NullPointerException();
             }
@@ -302,8 +311,8 @@ public class Course {
         int maxStudentPoints = calculateMax();
         int scoreToAdd = 0;
         
-        if (maxStudentPoints == -1 && points.size() == 1) {
-            for (String key : points.keySet()) {
+        if (maxStudentPoints == -1 && registrations.size() == 1) {
+            for (String key : registrations.keySet()) {
                 adjustedLetterGrades.put(key, "A");
             }
             
@@ -312,8 +321,8 @@ public class Course {
             scoreToAdd = this.maxPoints - maxStudentPoints;
         }
 
-        for (Entry<String, Integer> key: points.entrySet()) {
-            double newScore = key.getValue() + scoreToAdd;
+        for (Entry<String, Registration> key: registrations.entrySet()) {
+            double newScore = key.getValue().getPoints() + scoreToAdd;
             double percent = newScore / this.maxPoints * 100;
             String letterGrade = "A";
             
