@@ -1,8 +1,6 @@
-import main.java.*;
-
 import static org.junit.Assert.*;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Before;
 
@@ -25,7 +23,7 @@ public class GivenWhiteBox {
         oneStudent = new Course("SER316");
         oneStudent.set_points("Hanna", 85);
         oneStudent.set_points("Tanja", 100);
-        HashMap<String, Integer> ans = oneStudent.countOccurencesLetterGrades(false);
+        Map<String, Integer> ans = oneStudent.countOccurencesLetterGrades(false);
         assertTrue(ans.get("A") == 1);
         assertTrue(ans.get("B") == 1);
         assertTrue(ans.get("C") == 0);

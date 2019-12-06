@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.IntFunction;
@@ -17,7 +18,7 @@ import java.util.function.IntFunction;
 public class Course {
 
     // Maps student names (asurite) to their points
-    public HashMap<String, Integer> points = new HashMap<>();
+    public Map<String, Integer> points = new HashMap<>();
     
     // Course name
     private String name;
@@ -119,7 +120,7 @@ public class Course {
         this.points.put(name, points);
     }
 
-    public HashMap<String, Integer> getPoints() {
+    public Map<String, Integer> getPoints() {
         return points;
     }
 
@@ -146,11 +147,11 @@ public class Course {
     }
 
 
-    public ArrayList<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public ArrayList<Double> calculatePercentiles(ArrayList<Integer> collection) 
+    public List<Double> calculatePercentiles(List<Integer> collection) 
             throws NullPointerException {
         if (collection == null) {
             throw new NullPointerException();
@@ -159,7 +160,7 @@ public class Course {
         int maxMarks = calculateMax();
         System.out.println("Test: " + maxMarks);
         double eachPercentile = 0.0;
-        ArrayList<Double> percentileList = new ArrayList<Double>();
+        List<Double> percentileList = new ArrayList<Double>();
 
         for (int element : collection) {
             if (element > 0) {
@@ -173,7 +174,7 @@ public class Course {
     }
 
     public int calculateMax() throws NullPointerException {
-        ArrayList<Integer> collection = new ArrayList<Integer>(points.values());
+        List<Integer> collection = new ArrayList<Integer>(points.values());
 
         if (collection.size() == 1) {
             return -1;
@@ -192,8 +193,8 @@ public class Course {
         return max;
     }
 
-    private HashMap<String, Integer> increaseGradeCount(ArrayList<Integer> collection){
-        final HashMap<String, Integer> occur = new HashMap<String, Integer>();
+    private Map<String, Integer> increaseGradeCount(List<Integer> collection){
+        final Map<String, Integer> occur = new HashMap<String, Integer>();
         occur.put("A", 0);
         occur.put("B", 0);
         occur.put("C", 0);
@@ -236,9 +237,9 @@ public class Course {
      * @return hashmap with final letter grades for students based on curving `points`.
      * @throws NullPointerException Is thrown if "points" is empty
      */
-    public HashMap<String, Integer> countOccurencesLetterGrades(boolean curved) 
+    public Map<String, Integer> countOccurencesLetterGrades(boolean curved) 
             throws NullPointerException {
-        HashMap<String, Integer> occur;
+        Map<String, Integer> occur;
 
         if (!curved) {
             ArrayList<Integer> collection = new ArrayList<Integer>(points.values());

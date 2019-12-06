@@ -1,17 +1,15 @@
 package main.java;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.NoSuchElementException;
+import java.util.Map;
 
 public class Main {
-    static HashMap<String, Student> students = new HashMap<>();
+    static Map<String, Student> students = new HashMap<>();
     
     // change to one that works with happy day case
-    static HashMap<String, CourseGrades0> courses = new HashMap<>(); 
+    static Map<String, CourseGrades0> courses = new HashMap<>(); 
     // change to one that works with happy day case
-    static HashMap<String, CourseGrades4> courses4 = new HashMap<>(); 
+    static Map<String, CourseGrades4> courses4 = new HashMap<>(); 
 
     public static void main(String[] args)throws Exception {
 

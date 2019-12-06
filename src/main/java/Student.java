@@ -1,12 +1,13 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Student {
     private String asurite;
     private Major major;
     private double overallGrade;
-    private ArrayList<Course> courses = new ArrayList<Course>();
+    private Collection<Course> courses = new ArrayList<Course>();
 
     public Student(String asurite, Major major) {
         this.setAsurite(asurite);

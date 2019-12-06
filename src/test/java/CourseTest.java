@@ -4,8 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CourseTest
 {
@@ -34,7 +35,7 @@ public class CourseTest
         courseExpected.put("D", 0);
         courseExpected.put("F", 1);
         
-        HashMap<String, Integer> ans = course.countOccurencesLetterGrades(false);
+        Map<String, Integer> ans = course.countOccurencesLetterGrades(false);
         assertTrue(ans.equals(courseExpected));
     }
 
@@ -45,7 +46,7 @@ public class CourseTest
     public void noCurveOneD()
     {
         Course course;
-        HashMap<String, Integer> courseExpected = new HashMap<String, Integer>();
+        Map<String, Integer> courseExpected = new HashMap<String, Integer>();
         
         course = new Course("SER316");
         course.set_points("D", 36);
@@ -56,7 +57,7 @@ public class CourseTest
         courseExpected.put("D", 1);
         courseExpected.put("F", 0);
         
-        HashMap<String, Integer> ans = course.countOccurencesLetterGrades(false);
+        Map<String, Integer> ans = course.countOccurencesLetterGrades(false);
         assertTrue(ans.equals(courseExpected));
     }
     
@@ -78,7 +79,7 @@ public class CourseTest
         courseExpected.put("D", 0);
         courseExpected.put("F", 0);
         
-        HashMap<String, Integer> ans = course.countOccurencesLetterGrades(false);
+        Map<String, Integer> ans = course.countOccurencesLetterGrades(false);
         assertTrue(ans.equals(courseExpected));
     }
     
@@ -89,7 +90,7 @@ public class CourseTest
     public void noCurveOneB()
     {
         Course course;
-        HashMap<String, Integer> courseExpected = new HashMap<String, Integer>();
+        Map<String, Integer> courseExpected = new HashMap<String, Integer>();
         
         course = new Course("SER316");
         course.set_points("B", 85);
@@ -100,7 +101,7 @@ public class CourseTest
         courseExpected.put("D", 0);
         courseExpected.put("F", 0);
         
-        HashMap<String, Integer> ans = course.countOccurencesLetterGrades(false);
+        Map<String, Integer> ans = course.countOccurencesLetterGrades(false);
         assertTrue(ans.equals(courseExpected));
     }
     
@@ -111,7 +112,7 @@ public class CourseTest
     public void noCurveOneA()
     {
         Course course;
-        HashMap<String, Integer> courseExpected = new HashMap<String, Integer>();
+        Map<String, Integer> courseExpected = new HashMap<String, Integer>();
         
         course = new Course("SER316");
         course.set_points("A", 100);
@@ -122,7 +123,7 @@ public class CourseTest
         courseExpected.put("D", 0);
         courseExpected.put("F", 0);
         
-        HashMap<String, Integer> ans = course.countOccurencesLetterGrades(false);
+        Map<String, Integer> ans = course.countOccurencesLetterGrades(false);
         assertTrue(ans.equals(courseExpected));
     }
     
@@ -138,7 +139,7 @@ public class CourseTest
         
         try
         {
-            HashMap<String, Integer> ans = course.countOccurencesLetterGrades(false);
+            Map<String, Integer> ans = course.countOccurencesLetterGrades(false);
             
             assertTrue(false);
         }
@@ -166,7 +167,7 @@ public class CourseTest
         courseExpected.put("D", 0);
         courseExpected.put("F", 0);
         
-        HashMap<String, Integer> ans = course.countOccurencesLetterGrades(true);
+        Map<String, Integer> ans = course.countOccurencesLetterGrades(true);
         assertTrue(ans.equals(courseExpected));
     }
     
@@ -197,7 +198,7 @@ public class CourseTest
         course.dropStudent(null);
         
         course.set_points(student, 100);
-        ArrayList<Student> students = course.getStudents();
+        List<Student> students = course.getStudents();
         
         String newStudent = "Barney Goette";
         students.get(0).setAsurite(newStudent);
