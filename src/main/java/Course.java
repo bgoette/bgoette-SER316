@@ -192,6 +192,31 @@ public class Course {
         return max;
     }
 
+    private HashMap<String, Integer> increaseGradeCount(ArrayList<Integer> collection){
+        final HashMap<String, Integer> occur = new HashMap<String, Integer>();
+        occur.put("A", 0);
+        occur.put("B", 0);
+        occur.put("C", 0);
+        occur.put("D", 0);
+        occur.put("F", 0);
+        
+        collection.forEach((value) -> {
+
+            if ((double)value / maxPoints * 100 > 89.0) {
+                occur.put("A", occur.get("A") + 1);
+            } else if ((double)value / maxPoints * 100 > 80.0 && value / maxPoints <= 89.0) {
+                occur.put("B", occur.get("B") + 1);
+            } else if ((double)value / maxPoints * 100 > 50.0 && value / maxPoints <= 65) {
+                occur.put("C", occur.get("C") + 1);
+            } else if ((double)value / maxPoints * 100 > 35.0 && value / maxPoints <= 50.0) {
+                occur.put("D", occur.get("D") + 1);
+            } else {
+                occur.put("F", occur.get("F") + 1);
+            }
+        });
+        
+        return occur;
+    }
 
     /**
      * This is where you create your node flow graph and write your White Box test. 
@@ -213,34 +238,23 @@ public class Course {
      */
     public HashMap<String, Integer> countOccurencesLetterGrades(boolean curved) 
             throws NullPointerException {
-        HashMap<String, Integer> occur = new HashMap<String, Integer>();
-        occur.put("A", 0);
-        occur.put("B", 0);
-        occur.put("C", 0);
-        occur.put("D", 0);
-        occur.put("F", 0);
+        HashMap<String, Integer> occur;
 
         if (!curved) {
             ArrayList<Integer> collection = new ArrayList<Integer>(points.values());
             if (collection.isEmpty()) {
                 throw new NullPointerException();
             }
-
-            for (double value : collection) {
-                if ((double)value / maxPoints * 100 > 89.0) {
-                    occur.put("A", occur.get("A") + 1);
-                } else if ((double)value / maxPoints * 100 > 80.0 && value / maxPoints <= 89.0) {
-                    occur.put("B", occur.get("B") + 1);
-                } else if ((double)value / maxPoints * 100 > 50.0 && value / maxPoints <= 65) {
-                    occur.put("C", occur.get("C") + 1);
-                } else if ((double)value / maxPoints * 100 > 35.0 && value / maxPoints <= 50.0) {
-                    occur.put("D", occur.get("D") + 1);
-                } else {
-                    occur.put("F", occur.get("F") + 1);
-                }
-            }
+            
+            occur = increaseGradeCount(collection);
         } else {
+            occur = new HashMap<>();
             for (String grade : curveLetterGrades().values()) {
+                occur.put("A", 0);
+                occur.put("B", 0);
+                occur.put("C", 0);
+                occur.put("D", 0);
+                occur.put("F", 0);
                 
                 /*
                  * Changed because the key being passed to 

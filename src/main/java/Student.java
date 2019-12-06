@@ -1,6 +1,5 @@
 package main.java;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 public class Student {
@@ -47,13 +46,9 @@ public class Student {
     public boolean equals(Object other) {
         if (other == null) {
             return false;
-        }
-        
-        if (other == this) {
+        } else if (other == this) {
             return true;
-        }
-        
-        if (other.getClass() != this.getClass()) {
+        } else if (other.getClass() != this.getClass()) {
             return false;
         }
         
